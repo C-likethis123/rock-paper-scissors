@@ -17,27 +17,49 @@
 		}
 
 		function playRound(playerSelection, computerSelection) {
-			playerSelection = playerSelection.capitalize();
+			playerSelection = capitalize(playerSelection);
 			if (playerSelection == computerSelection) {
-				return "It's a tie!";
+				return "tie";
 			} else if (playerSelection == "Scissors") {
 				return computerSelection == "Paper" 
-					? "You win! Scissors beats Paper"
-					: "You lose! Rock beats Scissors";
+					? "win"
+					: "lose";
 
 			} else if (playerSelection == "Rock") {
 				return computerSelection == "Scissors"
-					? "You win! Rock beats Scissors"
-					: "You lose! Scissors beats Rock";
+					? "win"
+					: "lose";
 
 			} else if (playerSelection == "Paper") {
 				return computerSelection == "Rock"
-					? "You win! Paper beats Rock"
-					: "You lose! Scissors beats Paper";
+					? "win"
+					: "lose";
 			} else {
 				console.log("You entered an invalid value!");
 			}
 		}
+
+		function getOutput(playerSelection, computerSelection, outcome) {
+			if (outcome == "tie") {
+				return "It's a tie! Both chose " + playerSelection;
+			} else if (outcome == "win") {
+				return "You win! " + playerSelection + " beats " + computerSelection;
+			} else {
+				return "You lose! " + playerSelection + " loses to " + computerSelection;
+			}
+		}
+
+		function game() {
+			for (let i = 0; i < 5; i++) {
+				let playerSelection = prompt();
+				let computerSelection = computerPlay();
+				let outcome = playRound(playerSelection, computerSelection);
+
+				console.log(getOutput(playerSelection, computerSelection, outcome));
+			}
+		}
+
+		game();
 	</script>
 </body>
 </html>
