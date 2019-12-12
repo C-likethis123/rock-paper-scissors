@@ -49,14 +49,37 @@
 			}
 		}
 
+		function getWinner(playerScore, computerScore) {
+			if (playerScore > computerScore) {
+				return "You win! You: " + playerScore + " Computer: " + computerScore;
+			} else if (playerScore < computerScore) {
+				return "You lose! You: " + playerScore + " Computer: " + computerScore;
+			} else {
+				return "It's a tie! You: " + playerScore + " Computer: " + computerScore;
+			}
+
+		}
+
 		function game() {
+			let playerScore = 0, computerScore = 0;
+
 			for (let i = 0; i < 5; i++) {
 				let playerSelection = prompt();
 				let computerSelection = computerPlay();
 				let outcome = playRound(playerSelection, computerSelection);
 
+				if (outcome == "win") {
+					playerScore++;
+				}
+
+				if (outcome == "lose") {
+					computerScore++;
+				}
+
 				console.log(getOutput(playerSelection, computerSelection, outcome));
 			}
+
+			console.log("Game ended. " + getWinner(playerScore, computerScore));
 		}
 
 		game();
