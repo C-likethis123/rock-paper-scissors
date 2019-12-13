@@ -7,6 +7,7 @@
 	<center>
 		<h1> Choose 1! </h1>
 		<div class="resultDisplay"></div>
+		<div class="winnerAnnouncement"></div>
 		<button value="Scissors">Scissors</button>
 		<button value="Rock">Rock</button>
 		<button value="Paper">Paper</button>
@@ -73,35 +74,40 @@
 			result_display.textContent = outputString;
 		}
 
-		function game() {
-			let playerScore = 0, computerScore = 0;
+		function announceWinner(playerScore, computerScore) {
+			let winner = playerScore > computerScore ? "You" : "Computer";
+			const announcement = `${winner} wins!`;
 
-			//let playerSelection = getPlayerSelection();
-			let computerSelection = computerPlay();
-			// let outcome = playRound(playerSelection, computerSelection);
-
-			// if (outcome == "win") {
-			// 	playerScore++;
-			// }
-
-			// if (outcome == "lose") {
-			// 	computerScore++;
-			// }
-
-			// console.log(getOutput(playerSelection, computerSelection, outcome));
+			const winnerAnnouncement = document.querySelector('.winnerAnnouncement');
+			result_display.textContent = announcement;
 		}
 
-		const buttons = document.querySelectorAll('button');
-		let playerSelection;
-		buttons.forEach(button => button.addEventListener('click', function(e) {
-			let playerSelection = e.target.value;
-			let computerSelection = computerPlay();
-			let outcome = playRound(playerSelection, computerSelection);
-			let outputString = getOutput(playerSelection, computerSelection, outcome);
-			console.log(outputString);
+		function game() {
+			let playerScore = 0, computerScore = 0;
+			const buttons = document.querySelectorAll('button');
+			let playerSelection;
+			do {
+			
+				buttons.forEach(button => button.addEventListener('click', function(e) {
+					let playerSelection = e.target.value;
+					let computerSelection = computerPlay();
+					let outcome = playRound(playerSelection, computerSelection);
+					if (outcome == "win") {
+						playerScore++;
+					}
 
-			createOutputDisplay(outputString);
-		}))
+					if (outcome == "lose") {
+						computerScore++;
+					}
+					let outputString = getOutput(playerSelection, computerSelection, outcome);
+
+					createOutputDisplay(outputString);
+				}))
+				} while (playerScore < 5 && computerScore < 5);
+
+			announceWinner(playerScore, computerScore);
+		}
+		
 				
 		
 	</script>
