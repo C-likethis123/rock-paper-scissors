@@ -4,6 +4,13 @@
 	<title>Rock Paper Scissors</title>
 </head>
 <body>
+	<center>
+		<h1> Choose 1! </h1>
+		<button value="Scissors">Scissors</button>
+		<button value="Rock">Rock</button>
+		<button value="Paper">Paper</button>
+	</center>
+
 	<script language = "javascript">
 		const valid_options = ['Rock', 'Paper', 'Scissors'];
 
@@ -60,26 +67,33 @@
 
 		}
 
+		function getPlayerSelection() {
+			const buttons = document.querySelectorAll('button');
+			buttons.forEach(button => button.addEventListener('click', function(e) {
+				console.log(e);
+			}))
+		}
+
 		function game() {
 			let playerScore = 0, computerScore = 0;
 
 			for (let i = 0; i < 5; i++) {
-				let playerSelection = prompt();
+				let playerSelection = getPlayerSelection();
 				let computerSelection = computerPlay();
-				let outcome = playRound(playerSelection, computerSelection);
+				// let outcome = playRound(playerSelection, computerSelection);
 
-				if (outcome == "win") {
-					playerScore++;
-				}
+				// if (outcome == "win") {
+				// 	playerScore++;
+				// }
 
-				if (outcome == "lose") {
-					computerScore++;
-				}
+				// if (outcome == "lose") {
+				// 	computerScore++;
+				// }
 
-				console.log(getOutput(playerSelection, computerSelection, outcome));
+				// console.log(getOutput(playerSelection, computerSelection, outcome));
 			}
 
-			console.log("Game ended. " + getWinner(playerScore, computerScore));
+			// console.log("Game ended. " + getWinner(playerScore, computerScore));
 		}
 
 		game();
