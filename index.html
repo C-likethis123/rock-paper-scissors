@@ -5,13 +5,15 @@
 </head>
 <body>
 	<center>
-		<h1> Choose 1! </h1>
+		<h1> Rock Paper Scissors! </h1>
 		<div class="resultDisplay"></div>
 		<div class="scoreDisplay"></div>
 		<div class="winnerAnnouncement"></div>
-		<button value="Scissors">Scissors</button>
-		<button value="Rock">Rock</button>
-		<button value="Paper">Paper</button>
+		<div class="game-buttons">
+			<button value="Scissors">Scissors</button>
+			<button value="Rock">Rock</button>
+			<button value="Paper">Paper</button>
+		</div>
 	</center>
 
 	<script language = "javascript">
@@ -71,11 +73,12 @@
 		}
 
 		function announceWinner(playerScore, computerScore) {
-			let winner = playerScore > computerScore ? "You" : "Computer";
-			const announcement = `${winner} wins!`;
+			let announcement = playerScore > computerScore 
+				? "You win!" 
+				: "Computer wins!";
 
 			const winnerAnnouncement = document.querySelector('.winnerAnnouncement');
-			result_display.textContent = announcement;
+			winnerAnnouncement.textContent = announcement;
 		}
 
 		
@@ -98,10 +101,11 @@
 					let updatedResults = getUpdatedScore(playerScore, computerScore);
 
 					createOutputDisplay(outputString, updatedResults);
-				}))
 
-			announceWinner(playerScore, computerScore);		
-				
+					if (playerScore == 5 || computerScore == 5) {
+						announceWinner(playerScore, computerScore);	
+					}
+				}))
 		
 	</script>
 </body>
