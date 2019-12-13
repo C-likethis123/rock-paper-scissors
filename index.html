@@ -66,9 +66,9 @@
 		}
 		
 		function createOutputDisplay(outputString, updatedResults) {
-			const result_display = document.querySelector('.resultDisplay');
+			const resultDisplay = document.querySelector('.resultDisplay');
 			const scoreDisplay = document.querySelector('.scoreDisplay');
-			result_display.textContent = outputString;
+			resultDisplay.textContent = outputString;
 			scoreDisplay.textContent = updatedResults
 		}
 
@@ -81,31 +81,47 @@
 			winnerAnnouncement.textContent = announcement;
 		}
 
+		function resetGame() {
+			playerScore = 0, computerScore = 0;
+			const listOfDisplays = document.querySelectorAll('div');
+			listOfDisplays.forEach(display => display.textContent = "");
+		}
+
+		function promptAnotherGame() {
+			const winnerAnnouncement = document.querySelector('.winnerAnnouncement');
+			const playAgainButton = document.createElement('button');
+			playAgainButton.textContent = "Play Again?";
+
+			winnerAnnouncement.appendChild(playAgainButton);			
+		}
+
 		
 			let playerScore = 0, computerScore = 0;
 			const buttons = document.querySelectorAll('button');
 			let playerSelection;
 			
-				buttons.forEach(button => button.addEventListener('click', function(e) {
-					let playerSelection = e.target.value;
-					let computerSelection = computerPlay();
-					let outcome = playRound(playerSelection, computerSelection);
-					if (outcome == "win") {
-						playerScore++;
-					}
+			buttons.forEach(button => button.addEventListener('click', function(e) {
+				let playerSelection = e.target.value;
+				let computerSelection = computerPlay();
+				let outcome = playRound(playerSelection, computerSelection);
+				if (outcome == "win") {
+					playerScore++;
+				}
 
-					if (outcome == "lose") {
-						computerScore++;
-					}
-					let outputString = getOutput(playerSelection, computerSelection, outcome);
-					let updatedResults = getUpdatedScore(playerScore, computerScore);
+				if (outcome == "lose") {
+					computerScore++;
+				}
+				let outputString = getOutput(playerSelection, computerSelection, outcome);
+				let updatedResults = getUpdatedScore(playerScore, computerScore);
 
-					createOutputDisplay(outputString, updatedResults);
+				createOutputDisplay(outputString, updatedResults);
 
-					if (playerScore == 5 || computerScore == 5) {
-						announceWinner(playerScore, computerScore);	
-					}
-				}))
+				if (playerScore == 5 || computerScore == 5) {
+					announceWinner(playerScore, computerScore);
+					promptAnotherGame();
+					resetGame();
+				}
+			}))
 		
 	</script>
 </body>
