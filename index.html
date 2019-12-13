@@ -6,6 +6,7 @@
 <body>
 	<center>
 		<h1> Choose 1! </h1>
+		<div class="resultDisplay"></div>
 		<button value="Scissors">Scissors</button>
 		<button value="Rock">Rock</button>
 		<button value="Paper">Paper</button>
@@ -66,37 +67,43 @@
 			}
 
 		}
-
-		function getPlayerSelection() {
-			const buttons = document.querySelectorAll('button');
-			buttons.forEach(button => button.addEventListener('click', function(e) {
-				console.log(e);
-			}))
+		
+		function createOutputDisplay(outputString) {
+			const result_display = document.querySelector('.resultDisplay');
+			result_display.textContent = outputString;
 		}
 
 		function game() {
 			let playerScore = 0, computerScore = 0;
 
-			for (let i = 0; i < 5; i++) {
-				let playerSelection = getPlayerSelection();
-				let computerSelection = computerPlay();
-				// let outcome = playRound(playerSelection, computerSelection);
+			//let playerSelection = getPlayerSelection();
+			let computerSelection = computerPlay();
+			// let outcome = playRound(playerSelection, computerSelection);
 
-				// if (outcome == "win") {
-				// 	playerScore++;
-				// }
+			// if (outcome == "win") {
+			// 	playerScore++;
+			// }
 
-				// if (outcome == "lose") {
-				// 	computerScore++;
-				// }
+			// if (outcome == "lose") {
+			// 	computerScore++;
+			// }
 
-				// console.log(getOutput(playerSelection, computerSelection, outcome));
-			}
-
-			// console.log("Game ended. " + getWinner(playerScore, computerScore));
+			// console.log(getOutput(playerSelection, computerSelection, outcome));
 		}
 
-		game();
+		const buttons = document.querySelectorAll('button');
+		let playerSelection;
+		buttons.forEach(button => button.addEventListener('click', function(e) {
+			let playerSelection = e.target.value;
+			let computerSelection = computerPlay();
+			let outcome = playRound(playerSelection, computerSelection);
+			let outputString = getOutput(playerSelection, computerSelection, outcome);
+			console.log(outputString);
+
+			createOutputDisplay(outputString);
+		}))
+				
+		
 	</script>
 </body>
 </html>
