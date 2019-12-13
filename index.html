@@ -6,9 +6,9 @@
 <body>
 	<center>
 		<h1> Rock Paper Scissors! </h1>
-		<div class="resultDisplay"></div>
-		<div class="scoreDisplay"></div>
-		<div class="winnerAnnouncement"></div>
+		<div class="resultDisplay display"></div>
+		<div class="scoreDisplay display"></div>
+		<div class="winnerAnnouncement display"></div>
 		<div class="game-buttons">
 			<button value="Scissors">Scissors</button>
 			<button value="Rock">Rock</button>
@@ -83,7 +83,7 @@
 
 		function resetGame() {
 			playerScore = 0, computerScore = 0;
-			const listOfDisplays = document.querySelectorAll('div');
+			const listOfDisplays = document.querySelectorAll('.display');
 			listOfDisplays.forEach(display => display.textContent = "");
 		}
 
