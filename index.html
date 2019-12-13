@@ -92,7 +92,9 @@
 			const playAgainButton = document.createElement('button');
 			playAgainButton.textContent = "Play Again?";
 
-			winnerAnnouncement.appendChild(playAgainButton);			
+			winnerAnnouncement.appendChild(playAgainButton);
+
+			playAgainButton.addEventListener('click', resetGame);			
 		}
 
 		
@@ -119,7 +121,6 @@
 				if (playerScore == 5 || computerScore == 5) {
 					announceWinner(playerScore, computerScore);
 					promptAnotherGame();
-					resetGame();
 				}
 			}))
 		
