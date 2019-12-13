@@ -7,6 +7,7 @@
 	<center>
 		<h1> Choose 1! </h1>
 		<div class="resultDisplay"></div>
+		<div class="scoreDisplay"></div>
 		<div class="winnerAnnouncement"></div>
 		<button value="Scissors">Scissors</button>
 		<button value="Rock">Rock</button>
@@ -58,20 +59,15 @@
 			}
 		}
 
-		function getWinner(playerScore, computerScore) {
-			if (playerScore > computerScore) {
-				return "You win! You: " + playerScore + " Computer: " + computerScore;
-			} else if (playerScore < computerScore) {
-				return "You lose! You: " + playerScore + " Computer: " + computerScore;
-			} else {
-				return "It's a tie! You: " + playerScore + " Computer: " + computerScore;
-			}
-
+		function getUpdatedScore(playerScore, computerScore) {
+			return `You: ${playerScore} Computer: ${computerScore}`;
 		}
 		
-		function createOutputDisplay(outputString) {
+		function createOutputDisplay(outputString, updatedResults) {
 			const result_display = document.querySelector('.resultDisplay');
+			const scoreDisplay = document.querySelector('.scoreDisplay');
 			result_display.textContent = outputString;
+			scoreDisplay.textContent = updatedResults
 		}
 
 		function announceWinner(playerScore, computerScore) {
@@ -82,11 +78,10 @@
 			result_display.textContent = announcement;
 		}
 
-		function game() {
+		
 			let playerScore = 0, computerScore = 0;
 			const buttons = document.querySelectorAll('button');
 			let playerSelection;
-			do {
 			
 				buttons.forEach(button => button.addEventListener('click', function(e) {
 					let playerSelection = e.target.value;
@@ -100,14 +95,12 @@
 						computerScore++;
 					}
 					let outputString = getOutput(playerSelection, computerSelection, outcome);
+					let updatedResults = getUpdatedScore(playerScore, computerScore);
 
-					createOutputDisplay(outputString);
+					createOutputDisplay(outputString, updatedResults);
 				}))
-				} while (playerScore < 5 && computerScore < 5);
 
-			announceWinner(playerScore, computerScore);
-		}
-		
+			announceWinner(playerScore, computerScore);		
 				
 		
 	</script>
