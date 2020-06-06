@@ -95,6 +95,11 @@
             playerScore = 0, computerScore = 0;
             const listOfDisplays = document.querySelectorAll('.display');
             listOfDisplays.forEach(display => display.textContent = "");
+
+            const playerScoreBoard = document.querySelector('#player-score');
+            playerScoreBoard.textContent = `You: ${playerScore}`;
+            const computerScoreBoard = document.querySelector('#computer-score');
+            computerScoreBoard.textContent = `Computer: ${computerScore}`;
         }
 
         function promptAnotherGame() {
