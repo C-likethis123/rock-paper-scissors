@@ -36,6 +36,10 @@ h1 {
   transform: scale(1.05);
 }
 
+.game-button:focus {
+  outline: none;
+}
+
 p.display {
   height: 1em;
 }
