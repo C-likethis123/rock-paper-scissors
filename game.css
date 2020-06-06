@@ -1,0 +1,56 @@
+@import url("https://fonts.googleapis.com/css2?family=Lato");
+
+* {
+  background-color: #f0f0f0;
+  font-family: Lato, Arial, Helvetica, sans-serif;
+}
+
+#game {
+  margin: auto;
+  padding: 5% 0;
+  text-align: center;
+}
+
+h1 {
+  color: #47525e;
+  font-size: 40px;
+  text-align: center;
+}
+
+.choices {
+  width: 100%;
+  height: fit-content;
+  display: flex;
+  justify-content: space-around;
+}
+
+.choices > button {
+  background: url("rock-paper-scissors-line-icons.png") no-repeat;
+  width: 121px;
+  height: 121px;
+  border-radius: 10px;
+  border: none;
+}
+
+div.display {
+  height: 1em;
+}
+
+#scissors {
+  background-position: -331px -109px;
+}
+
+#paper {
+  background-position: -189px -109px;
+}
+
+#rock {
+  background-position: -48px -109px;
+}
+
+#scores {
+  display: flex;
+  justify-content: space-evenly;
+  font-size: 2em;
+  margin: 5% 0;
+}
