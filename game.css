@@ -24,7 +24,7 @@ h1 {
   justify-content: space-around;
 }
 
-.choices > button {
+.game-button {
   background: url("rock-paper-scissors-line-icons.png") no-repeat;
   width: 121px;
   height: 121px;
@@ -32,11 +32,11 @@ h1 {
   border: none;
 }
 
-.choices > button:hover {
-  transform: scale(1.1);
+.game-button:hover {
+  transform: scale(1.05);
 }
 
-div.display {
+p.display {
   height: 1em;
 }
 

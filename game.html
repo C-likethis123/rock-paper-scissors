@@ -21,9 +21,18 @@
             </div>
         </div>
         <div class="choices">
-            <button id="rock" value="Rock"></button>
-            <button id="paper" value="Paper"></button>
-            <button id="scissors" value="Scissors"></button>
+            <div>
+                <button class="game-button" id="rock" value="Rock"></button>
+                <div>Rock</div>
+            </div>
+            <div>
+                <button class="game-button" id="paper" value="Paper"></button>
+                <div>Paper</div>
+            </div>
+            <div>
+                <button class="game-button" id="scissors" value="Scissors"></button>
+                <div>Scissors</div>
+            </div>
         </div>
     </div>
 
@@ -115,7 +124,7 @@
 
 
         let playerScore = 0, computerScore = 0;
-        const buttons = document.querySelectorAll('.choices > button');
+        const buttons = document.querySelectorAll('.game-button');
         let playerSelection;
 
         buttons.forEach(button => button.addEventListener('click', function (e) {
