@@ -14,9 +14,9 @@
         <div class="scoreDisplay display"></div>
         <div class="winnerAnnouncement display"></div>
         <div class="choices">
-            <div id="rock" value="Rock"></div>
-            <div id="paper" value="Paper"></div>
-            <div id="scissors" value="Scissors"></div>
+            <button id="rock" value="Rock"></button>
+            <button id="paper" value="Paper"></button>
+            <button id="scissors" value="Scissors"></button>
         </div>
     </div>
 
@@ -65,15 +65,14 @@
             }
         }
 
-        function getUpdatedScore(playerScore, computerScore) {
-            return `You: ${playerScore} Computer: ${computerScore}`;
-        }
-
-        function createOutputDisplay(outputString, updatedResults) {
+        function createOutputDisplay(outputString, playerScore, computerScore) {
             const resultDisplay = document.querySelector('.resultDisplay');
-            const scoreDisplay = document.querySelector('.scoreDisplay');
             resultDisplay.textContent = outputString;
-            scoreDisplay.textContent = updatedResults
+
+            const playerScoreBoard = document.querySelector('#player-score');
+            playerScoreBoard.textContent = `You: ${playerScore}`;
+            const computerScoreBoard = document.querySelector('#computer-score');
+            computerScoreBoard.textContent = `Computer: ${computerScore}`;
         }
 
         function announceWinner(playerScore, computerScore) {
@@ -103,7 +102,7 @@
 
 
         let playerScore = 0, computerScore = 0;
-        const buttons = document.querySelectorAll('div');
+        const buttons = document.querySelectorAll('.choices > button');
         let playerSelection;
 
         buttons.forEach(button => button.addEventListener('click', function (e) {
@@ -118,9 +117,8 @@
                 computerScore++;
             }
             let outputString = getOutput(playerSelection, computerSelection, outcome);
-            let updatedResults = getUpdatedScore(playerScore, computerScore);
 
-            createOutputDisplay(outputString, updatedResults);
+            createOutputDisplay(outputString, playerScore, computerScore);
 
             if (playerScore == 5 || computerScore == 5) {
                 announceWinner(playerScore, computerScore);
