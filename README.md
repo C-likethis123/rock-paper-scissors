@@ -4,6 +4,10 @@
 
 My attempt at creating an online Rock Paper Scissors game, for the Odin Project.
 
+## Credits
+
+Images taken from: [Rock Paper Scissors Vectors by Vecteezy](https://www.vecteezy.com/free-vector/rock-paper-scissors)
+
 ## Development Progress
 
 - First milestone: create a console Rock Paper Scissors game. (Completed in Dec 2020)
